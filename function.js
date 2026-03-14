@@ -28,17 +28,6 @@ function startScanner() {
         },
 
 
-        // --------add to cart -----
-        (code) => {
-            if (products[code]) {
-                let p = products[code];
-                cart.push(p);
-                total += p.price;
-                updateCart();
-            }
-        }
-
-
 
 
 
@@ -48,6 +37,28 @@ function startScanner() {
             // document.getElementById("result").innerText = "Result:" + decodedText;
 
             // include displaying clickable website links
+
+
+
+
+            // --------add to cart -----
+            (code) => {
+                if (products[code]) {
+                    let p = products[code];
+                    cart.push(p);
+                    total += p.price;
+                    updateCart();
+                }
+            }
+            // ---------- end of add to cart -----------
+
+
+
+
+
+
+            //--------Show Result ------------
+
             let resultElement = document.getElementById("result");
 
             if (decodedText.startsWith("http://") || decodedText.startsWith("https://")) {
@@ -67,7 +78,7 @@ function startScanner() {
 
 
 // updateCart or Show Cart list
-function updateCart(){
+function updateCart() {
 
     let cartList = document.getElementById("cart");
     cartList.innerHTML = "";
@@ -75,19 +86,19 @@ function updateCart(){
     cart.forEach(item => {
         let li = document.createElement("li");
 
-        li.textContent = item.name + " - =N=" + item.price;
+        li.textContent = item.name + " - ₦" + item.price;
 
         cartList.appendChild(li);
     });
 
-    document.getElementById("total").innerText = "Total: =N=" + total;
+    document.getElementById("total").innerText = "Total: ₦" + total;
 }
 
 
 
 //------ Checkout Code -----------
 function checkout() {
-    alert("Total = N" + total);
+    alert("Total = ₦" + total);
 
     cart = [];
     total = 0;
