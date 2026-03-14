@@ -13,7 +13,18 @@ function startScanner() {
             qrbox: 250
         },
         (decodedText) => {
-            document.getElementById("result").innerText = "Result:" + decodedText;
+            // only for displaying the scanned text
+            // document.getElementById("result").innerText = "Result:" + decodedText;
+
+            // include displaying clickable website links
+            let resultElement = document.getElementById("result");
+
+            if (decodedText.startsWith("http://") || decodedText.startsWith("https://")) {
+                resultElement.innerHTML = 'Result: <a href=" ' + decodedText + '" target="_blank">' + decodedText + "</a>";
+
+            } else {
+                resultElement.innerText = "Result:" + decodedText;
+            }
 
         },
         (error) => {
