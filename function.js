@@ -13,6 +13,7 @@ let products = {
 let cart = [];
 let total = 0;
 let scanner;
+let resultElement = document.getElementById("result");
 
 
 // starting scan
@@ -102,6 +103,7 @@ function checkout() {
 
     cart = [];
     total = 0;
+    resultElement = "";
 
     updateCart();
 }
