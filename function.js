@@ -3,7 +3,7 @@
 
 // POS Database of products wit their barcodes, name, and price
 let products = {
-    "111": { name: "Rice", price: 5000 },
+    "889230006286": { name: "Rice", price: 5000 },
     "222": { name: "Milk", price: 1500 },
     "333": { name: "Bread", price: 800 },
     "444": { name: "Indomie", price: 300 },
@@ -13,7 +13,7 @@ let products = {
 let cart = [];
 let total = 0;
 let scanner;
-let resultElement = document.getElementById("result");
+
 
 
 // starting scan
@@ -103,7 +103,7 @@ function checkout() {
 
     cart = [];
     total = 0;
-    resultElement = "";
+   
 
     updateCart();
 }
