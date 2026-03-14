@@ -10,14 +10,19 @@
 
 <body>
     <div class="container">
-        <h1>Scan Code App</h1>
+
+        <h1>Supermarket POS</h1>
 
         <div id="reader"></div>
 
-        <p id="result">Result: None</p>
+        <h3>Cart</h3>
+        <ul id="cart"></ul>
 
-        <button onclick="startScanner()">Start Scanner</button>
-        <button onclick="stopScanner()">Stop Scanner</button>
+        <h3 id="total">Total: =N= 0</h3>
+
+        <button onclick="startScanner">Start</button>
+        <button onclick="checkout">Checkout</button>
+
     </div>
 
     <!-- QR / Barcode Library -->
