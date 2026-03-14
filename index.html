@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Scan Code App</h1>
+
+        <div id="reader"></div>
+
+        <p id="result">Result: None</p>
+
+        <button onclick="startScanner()">Start Scanner</button>
+        <button onclick="stopScanner()">Stop Scanner</button>
+    </div>
+
+    <!-- QR / Barcode Library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="./function.js"></script>
+</body>
+
+</html>
