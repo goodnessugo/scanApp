@@ -42,14 +42,14 @@ function startScanner() {
 
 
             // --------add to cart -----
-            (code) => {
-                if (products[code]) {
-                    let p = products[code];
-                    cart.push(p);
-                    total += p.price;
-                    updateCart();
-                }
+
+            if (products[decodedText]) {
+                let p = products[decodedText];
+                cart.push(p);
+                total += p.price;
+                updateCart();
             }
+
             // ---------- end of add to cart -----------
 
 
