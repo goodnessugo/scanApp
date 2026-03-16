@@ -80,7 +80,7 @@ function startScanner() {
 
             setTimeout(() => {
                 scanLocked = false;
-            }, 1500);
+            }, 5000);
 
 
         },
