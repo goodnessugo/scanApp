@@ -10,9 +10,15 @@ let products = {
     "555": { name: "Sugar", price: 1200 },
 }
 
+// End of POS Database
+
+
+
+
 let cart = [];
 let total = 0;
 let scanner;
+let scanLocked = false
 
 
 
@@ -34,13 +40,11 @@ function startScanner() {
 
 
         (decodedText) => {
-            // only for displaying the scanned text
-            // document.getElementById("result").innerText = "Result:" + decodedText;
 
-            // include displaying clickable website links
+            // double scan
+            if (scanLocked) return;
 
-
-
+            scanLocked = true;
 
             // --------add to cart -----
 
@@ -62,12 +66,22 @@ function startScanner() {
 
             let resultElement = document.getElementById("result");
 
+            resultElement.innerText = "Result: " + decodedText;
+
+            // this is able to let Links scanned Clickable
             if (decodedText.startsWith("http://") || decodedText.startsWith("https://")) {
                 resultElement.innerHTML = 'Result: <a href=" ' + decodedText + '" target="_blank">' + decodedText + "</a>";
 
             } else {
                 resultElement.innerText = "Result:" + decodedText;
             }
+            // end of Scanned Links that ar clickable
+
+
+            setTimeout(() => {
+                scanLocked = false;
+            }, 1500);
+
 
         },
         (error) => {
@@ -103,7 +117,7 @@ function checkout() {
 
     cart = [];
     total = 0;
-   
+
 
     updateCart();
 }
