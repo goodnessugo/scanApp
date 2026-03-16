@@ -15,10 +15,13 @@ let products = {
 
 
 
-let cart = [];
+let cart = [];          //cart is initially empty array
 let total = 0;
-let scanner;
-let scanLocked = false
+let scanner;           //this scan
+let scanLocked = false; //this prevents constant or infinite scanning
+let lastScannedCode = null;
+let scanReady = true;
+
 
 
 
@@ -45,6 +48,19 @@ function startScanner() {
             if (scanLocked) return;
 
             scanLocked = true;
+
+
+            // require barcode removed before next scan
+            if (!scanReady && decodedText === lastScannedCode) {
+                return;
+            }
+
+            scanReady = false;
+            lastScannedCode = decodedText;
+
+
+            // adding beep sound
+            document.getElementById("beep").play();
 
             // --------add to cart -----
 
@@ -86,6 +102,9 @@ function startScanner() {
         },
         (error) => {
             console.log(error);
+
+            // when camera sees nothing, allow next scan
+            scanReady = true;
         }
     );
 }
