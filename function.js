@@ -61,14 +61,27 @@ function startScanner() {
 
             // adding beep sound
             document.getElementById("beep").play();
+            // end of beep sound
 
             // --------add to cart -----
 
             if (products[decodedText]) {
-                let p = products[decodedText];
-                cart.push(p);
-                total += p.price;
-                updateCart();
+
+                if (!cart[decodedText]) {
+
+                    let p = products[decodedText];
+                    cart[decodedText] = {
+                        name: p.name,
+                        price: p.price,
+                        qty: 1
+                    };
+                    updateCart();
+
+                }
+
+                // cart.push(p);
+                // total += p.price;
+
             }
 
             // ---------- end of add to cart -----------
@@ -117,16 +130,52 @@ function updateCart() {
     let cartList = document.getElementById("cart");
     cartList.innerHTML = "";
 
-    cart.forEach(item => {
+
+    total = 0;
+
+    for(let code in cart) {
+        let item = cart[code];
+
         let li = document.createElement("li");
 
-        li.textContent = item.name + " - ₦" + item.price;
+        let itemTotal = item.price * item.qty;
+
+        total += itemTotal;
+
+        li.innerHTML = item.name + " | ₦" + item.price + " | Qty: " + item.qty + 
+        "<button onclick="addQty('" + code + "')"> + </button>" + " = ₦" + itemTotal;
 
         cartList.appendChild(li);
-    });
+
+    }
 
     document.getElementById("total").innerText = "Total: ₦" + total;
 }
+
+
+// ---------add quantity button-----------
+function addQty(code) {
+    cart[code].qty++;
+
+    updateCart();
+}
+
+
+// ----------minus quantity button ------------
+function minusQty(code){
+    cart[code].qty--;
+
+    if(cart[code].qty <= 0) {
+        delete cart[code];
+    }
+
+    updateCart();
+
+}
+
+
+
+
 
 
 
