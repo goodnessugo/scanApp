@@ -15,7 +15,7 @@ let products = {
 
 
 
-let cart = [];          //cart is initially empty array
+let cart = {};          //cart is initially empty object
 let total = 0;
 let scanner;           //this scan
 let scanLocked = false; //this prevents constant or infinite scanning
@@ -143,7 +143,8 @@ function updateCart() {
         total += itemTotal;
 
         li.innerHTML = item.name + " | ₦" + item.price + " | Qty: " + item.qty + 
-        "<button onclick="addQty('" + code + "')"> + </button>" + " = ₦" + itemTotal;
+        "<button onclick=\"addQty('" + code + "')\"> + </button>" + 
+        "<button onclick=\"minusQty('" + code + "')\"> + </button>" + " = ₦" + itemTotal;
 
         cartList.appendChild(li);
 
@@ -183,7 +184,7 @@ function minusQty(code){
 function checkout() {
     alert("Total = ₦" + total);
 
-    cart = [];
+    cart = {};
     total = 0;
 
 
