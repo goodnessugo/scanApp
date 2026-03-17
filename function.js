@@ -3,11 +3,11 @@
 
 // POS Database of products wit their barcodes, name, and price
 let products = {
-    "6855123644549": { name: "Lacasera", price: 5000 },
-    "6156000264042": { name: "Bottle water", price: 1500 },
-    "333": { name: "Bread", price: 800 },
-    "444": { name: "Indomie", price: 300 },
-    "555": { name: "Sugar", price: 1200 },
+    "6855123644549": { name: "Change Over", price: 3500 },
+    "6156000264042": { name: "Bottle water", price: 200},
+    "5010162000164": { name: "Maltina", price: 800 },
+    "6008155007459": { name: "Cowbell milk", price: 100 },
+    "790920324712": { name: "Cellotape", price: 500 },
 }
 
 // End of POS Database
